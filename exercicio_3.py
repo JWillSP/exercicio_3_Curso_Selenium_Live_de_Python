@@ -6,6 +6,7 @@ init_url = r"C:\Users\Public\Downloads\geckodriver.exe"
 
 nav = webdriver.Firefox(executable_path=init_url)
 
+#exercicio_03.html
 nav.get('https://selenium.dunossauro.live/exercicio_03.html')
 
 time.sleep(2)
@@ -18,6 +19,7 @@ start_here.click()
 
 time.sleep(2)
 
+#page_1.html
 main1 = nav.find_element_by_tag_name('main')
 
 list_Ps = [ele
@@ -38,6 +40,7 @@ to_click.click()
 
 time.sleep(10)
 
+#page_2.html2
 nav.refresh()
 
 time.sleep(10)
@@ -50,6 +53,7 @@ to_click2.click()
 
 time.sleep(2)
 
+#page_3.html
 url = nav.current_url
 
 path = re.search(r'//.+/(.+)', url).group(1)
@@ -60,4 +64,5 @@ to_click3.click()
 
 time.sleep(2)
 
+#page_4.html
 nav.refresh()

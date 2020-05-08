@@ -2,6 +2,10 @@ import re
 import time
 from selenium import webdriver
 
+def clicar_em(text, ele):
+    ele.find_element_by_link_text(text).click()
+    time.sleep(2)
+
 init_url = r"C:\Users\Public\Downloads\geckodriver.exe"
 
 nav = webdriver.Firefox(executable_path=init_url)
@@ -13,11 +17,7 @@ time.sleep(2)
 
 main = nav.find_element_by_tag_name('main')
 
-start_here = main.find_element_by_link_text('Começar por aqui')
-
-start_here.click()
-
-time.sleep(2)
+clicar_em('Começar por aqui', nav)
 
 #page_1.html
 main1 = nav.find_element_by_tag_name('main')
@@ -34,11 +34,9 @@ items_list = main1.find_elements_by_tag_name('li')
 
 another = [ele for ele in items_list if ele.text != str(resultado1)][0]
 
-to_click = another.find_element_by_link_text(another.text)
+clicar_em(another.text, another)
 
-to_click.click()
-
-time.sleep(10)
+time.sleep(6)
 
 #page_2.html2
 nav.refresh()
@@ -47,22 +45,14 @@ time.sleep(10)
 
 nav.title
 
-to_click2 = nav.find_element_by_link_text(nav.title)
-
-to_click2.click()
-
-time.sleep(2)
+clicar_em(nav.title, nav)
 
 #page_3.html
 url = nav.current_url
 
 path = re.search(r'//.+/(.+)', url).group(1)
 
-to_click3 = nav.find_element_by_link_text(path)
-
-to_click3.click()
-
-time.sleep(2)
+clicar_em(path,nav)
 
 #page_4.html
 nav.refresh()

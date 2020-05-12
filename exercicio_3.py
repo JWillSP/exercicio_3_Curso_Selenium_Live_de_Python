@@ -15,8 +15,6 @@ nav.get('https://selenium.dunossauro.live/exercicio_03.html')
 
 time.sleep(2)
 
-main = nav.find_element_by_tag_name('main')
-
 clicar_em('Começar por aqui', nav)
 
 #page_1.html
@@ -42,8 +40,6 @@ time.sleep(6)
 nav.refresh()
 
 time.sleep(10)
-
-nav.title
 
 clicar_em(nav.title, nav)
 

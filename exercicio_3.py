@@ -15,26 +15,16 @@ nav.get('https://selenium.dunossauro.live/exercicio_03.html')
 
 time.sleep(2)
 
-main = nav.find_element_by_tag_name('main')
-
 clicar_em('Começar por aqui', nav)
 
 #page_1.html
-main1 = nav.find_element_by_tag_name('main')
+p = nav.find_element_by_xpath('//p[contains(text(),"=")]')
 
-list_Ps = [ele
-           for ele in main1.find_elements_by_tag_name('p')
-           if '=' in ele.text]
+rtn = eval(p.text.split('=')[0])
 
-expression = list_Ps[0].text
+outra = nav.find_element_by_xpath(f'//main//li[not(contains(text(),"{rtn}"))]')
 
-resultado1 = eval(expression.split('=')[0])
-
-items_list = main1.find_elements_by_tag_name('li')
-
-another = [ele for ele in items_list if ele.text != str(resultado1)][0]
-
-clicar_em(another.text, another)
+clicar_em(outra.text, outra)
 
 time.sleep(6)
 
@@ -42,8 +32,6 @@ time.sleep(6)
 nav.refresh()
 
 time.sleep(10)
-
-nav.title
 
 clicar_em(nav.title, nav)
 
